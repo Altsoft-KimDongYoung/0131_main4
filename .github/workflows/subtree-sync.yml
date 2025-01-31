@@ -37,7 +37,7 @@ jobs:
         run: |
           git subtree pull --prefix=web-subtree constants-repo web-only        
           git rm -r --cached web-subtree
-          git subtree push --prefix=web-subtree constants-repo web-only
+          git subtree push --prefix=web-subtree constants-repo web-only -- --force
 
       - name: Trigger B Repo Action
         uses: peter-evans/repository-dispatch@v2
