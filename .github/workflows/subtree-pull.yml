@@ -25,6 +25,7 @@ jobs:
           # A 레포, 혹은 constants 레포를 참조하려는 경우에 맞게 설정
           # 예: "0131_constants" 레포에서 특정 브랜치(core-only, web-only 등)를 pull 받는 경우
           git remote add constants-repo https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/Altsoft-KimDongYoung/0131_constants.git
+          git fetch constants-repo
 
       - name: Subtree pull (core-only)
         run: |
