@@ -24,6 +24,7 @@ jobs:
       - name: Add remote
         run: |
           git remote add constants-repo https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/Altsoft-KimDongYoung/0131_constants.git
+          git subtree pull --prefix=core-subtree constants-repo core-only
 
       - name: Subtree push to core-only
         run: |
