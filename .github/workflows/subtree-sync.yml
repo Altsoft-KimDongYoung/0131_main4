@@ -30,13 +30,11 @@ jobs:
       - name: Subtree push to core-only
         run: |
           git subtree pull --prefix=core-subtree constants-repo core-only
-          git rm -r --cached core-subtree
           git subtree push --prefix=core-subtree constants-repo core-only
 
       - name: Subtree push to web-only
         run: |
           git subtree pull --prefix=web-subtree constants-repo web-only        
-          git rm -r --cached web-subtree
           git subtree push --prefix=web-subtree constants-repo web-only
 
       - name: Trigger B Repo Action
