@@ -39,7 +39,7 @@ jobs:
           # PAT(개인 액세스 토큰). 'repo' 권한 포함
           token: ${{ secrets.PERSONAL_TOKEN }}
           # 이벤트를 받을 B 레포
-          repository: "Altsoft-KimDongYoung/0131_main4"
+          repository: "Altsoft-KimDongYoung/0131_main2"
           # B 레포에서 구독할 이벤트 타입
           event-type: "main-merged-main4"
           # 필요하다면 추가 데이터 client-payload 예시
