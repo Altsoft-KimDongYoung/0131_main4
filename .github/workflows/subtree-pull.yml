@@ -1,0 +1,37 @@
+name: On Repository Dispatch (Pull from constants)
+
+on:
+  repository_dispatch:
+    types: [main-merged] # A 레포에서 event-type: "main-merged" 로 보냈으므로
+
+jobs:
+  pull-subtree:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out B repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.PERSONAL_TOKEN }} # PAT 사용(또는 기본 GITHUB_TOKEN 설정)
+
+      - name: Git config
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Add remote
+        run: |
+          # A 레포, 혹은 constants 레포를 참조하려는 경우에 맞게 설정
+          # 예: "0131_constants" 레포에서 특정 브랜치(core-only, web-only 등)를 pull 받는 경우
+          git remote add constants-repo https://x-access-token:${{ secrets.PERSONAL_TOKEN }}@github.com/Altsoft-KimDongYoung/0131_constants.git
+
+      - name: Subtree pull (core-only)
+        run: |
+          # B 레포에 core-subtree 폴더가 있다면, core-only 브랜치 내용 가져오기
+          git subtree pull --prefix=core-subtree constants-repo core-only
+
+      - name: Subtree pull (web-only)
+        run: |
+          # B 레포에 web-subtree 폴더가 있다면, web-only 브랜치 내용 가져오기
+          git subtree pull --prefix=web-subtree constants-repo web-only
