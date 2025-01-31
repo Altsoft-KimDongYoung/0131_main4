@@ -2,7 +2,7 @@ name: On Repository Dispatch (Pull from constants)
 
 on:
   repository_dispatch:
-    types: [main-merged] # A 레포에서 event-type: "main-merged" 로 보냈으므로
+    types: [main-merged-main2] # A 레포에서 event-type: "main-merged" 로 보냈으므로
 
 jobs:
   pull-subtree:
